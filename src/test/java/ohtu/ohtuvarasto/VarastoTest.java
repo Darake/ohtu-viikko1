@@ -148,7 +148,7 @@ public class VarastoTest {
 
     @Test
     public void varastoPalauttaaOikeanMuotoisenMerkkiJonon() {
-        String odotettu = "saldo = 0.0, vielä tilaa 10.0";
+        String odotettu = "saldo = 0.0, vielä tilaa 12.0";
 
         assertEquals(odotettu, varasto.toString());
     }
