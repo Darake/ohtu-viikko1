@@ -6,6 +6,10 @@
  * user guide available at https://guides.gradle.org/creating-new-gradle-builds/
  */
 
+plugins {
+    id 'checkstyle'
+}
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
@@ -23,10 +27,10 @@ repositories {
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
-    compile 'com.google.guava:guava:20.0'
+    implementation 'com.google.guava:guava:20.0'
 
     // Use JUnit test framework
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 
 jar {
@@ -41,7 +45,7 @@ jacocoTestReport {
         html.enabled true
     }
     afterEvaluate {
-        classDirectories = files(classDirectories.files.collect {
+        classDirectories.from = files(classDirectories.files.collect {
             fileTree(dir: it,
                     exclude: ['main/**'])
         })
